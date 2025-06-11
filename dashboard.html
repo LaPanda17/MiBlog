@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bienvenido, <span id="userName"></span></h1>
+            <button id="logoutBtn" class="btn btn-primary">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </button>
+        </header>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="notes">Notas</div>
+            <div class="tab" data-tab="tasks">Tareas</div>
+        </div>
+        
+        <!-- Contenido de Notas -->
+        <div id="notesTab" class="tab-content active">
+            <div class="notes-actions">
+                <button id="generateNotes" class="btn btn-primary">
+                    <i class="fas fa-magic"></i> Generar Notas
+                </button>
+                <button id="addNote" class="btn btn-success">
+                    <i class="fas fa-plus"></i> Nueva Nota
+                </button>
+            </div>
+            
+            <div id="notesContainer" class="grid"></div>
+        </div>
+        
+        <!-- Contenido de Tareas -->
+        <div id="tasksTab" class="tab-content">
+            <div class="notes-actions">
+                <button id="addTask" class="btn btn-success">
+                    <i class="fas fa-plus"></i> Nueva Tarea
+                </button>
+            </div>
+            
+            <div id="tasksContainer" class="grid"></div>
+        </div>
+    </div>
+
+    <!-- Modal para Notas -->
+    <div id="noteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="noteModalTitle">Nueva Nota</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="noteForm">
+                <input type="hidden" id="noteId">
+                <div class="form-group">
+                    <label for="noteTitle">Título</label>
+                    <input type="text" id="noteTitle" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="noteContent">Contenido</label>
+                    <textarea id="noteContent" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar Nota</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Tareas -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="taskModalTitle">Nueva Tarea</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="taskForm">
+                <input type="hidden" id="taskId">
+                <div class="form-group">
+                    <label for="taskTitle">Título</label>
+                    <input type="text" id="taskTitle" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="taskDueDate">Fecha Límite</label>
+                    <input type="date" id="taskDueDate" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="taskPriority">Prioridad</label>
+                    <select id="taskPriority" class="form-control">
+                        <option value="low">Baja</option>
+                        <option value="medium" selected>Media</option>
+                        <option value="high">Alta</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar Tarea</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
